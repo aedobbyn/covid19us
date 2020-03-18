@@ -41,6 +41,18 @@ get_us_daily
 
 ```{r example}
 library(covid)
+```
 
+Get the most up-to-date data for all states:
+
+```{r}
 get_states_current()
 ```
+
+
+Or get specific information for a given state-date combination.
+
+```{r}
+get_states_daily("NY", "2020-03-17")
+```
+

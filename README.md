@@ -31,7 +31,11 @@ devtools::install_github("aedobbyn/covid")
 
 ``` r
 library(covid)
+```
 
+Get the most up-to-date data for all states:
+
+``` r
 get_states_current()
 #> # A tibble: 56 x 8
 #>    state positive negative pending death total last_update_et check_time_et
@@ -47,4 +51,14 @@ get_states_current()
 #>  9 DC          31      138       1    NA   170 3/17 19:00     3/17 21:37   
 #> 10 DE          16       36      NA    NA    52 3/17 15:55     3/17 22:00   
 #> # … with 46 more rows
+```
+
+Or get specific information for a given state-date combination.
+
+``` r
+get_states_daily("NY", "2020-03-17")
+#> # A tibble: 1 x 8
+#>       date state positive negative pending death total dateChecked         
+#>      <int> <chr>    <int>    <int> <lgl>   <int> <int> <chr>               
+#> 1 20200317 NY        1700     5506 NA          7  7206 2020-03-17T20:00:00Z
 ```

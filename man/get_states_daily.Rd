@@ -4,7 +4,12 @@
 \alias{get_states_daily}
 \title{Get daily counts for every state}
 \usage{
-get_states_daily()
+get_states_daily(state = "all", date = "all")
+}
+\arguments{
+\item{state}{State abbreviation for a specific state or all states with \code{"all"}.}
+
+\item{date}{For a specific date, a character or date vector of length 1 coercible to a date with \code{lubridate::as_date()}.}
 }
 \value{
 
@@ -15,5 +20,8 @@ Updated every day at 4pm.
 \examples{
 \dontrun{
 get_states_daily()
+
+get_states_daily("NY", "2020-03-17")
+get_states_daily("WA")
 }
 }
