@@ -8,13 +8,24 @@ status](https://travis-ci.org/aedobbyn/covid.svg?branch=master)](https://travis-
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project
-API](https://covidtracking.com/api/)
+API](https://covidtracking.com/api/). It provides updates on the spread
+of the virus in the US.
 
 ## Installation
 
 ``` r
 devtools::install_github("aedobbyn/covid")
 ```
+
+## Functions
+
+    get_counties
+    get_states_current
+    get_states_daily
+    get_states_info
+    get_tracker_urls
+    get_us_current
+    get_us_daily
 
 ## Example
 
