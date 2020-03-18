@@ -1,0 +1,34 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# covid
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/aedobbyn/covid.svg?branch=master)](https://travis-ci.org/aedobbyn/covid)
+<!-- badges: end -->
+
+This is an R wrapper around the [COVID Tracking Project API](https://covidtracking.com/api/)
+
+## Installation
+
+``` r
+devtools::install_github("aedobbyn/covid")
+```
+
+## Example
+
+```{r example}
+library(covid)
+
+get_states_current()
+```
