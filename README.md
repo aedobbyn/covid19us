@@ -34,7 +34,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative pending death total request_datetime   
 #>      <int>    <int>   <int> <int> <int> <dttm>             
-#> 1     8131    71635    2805   132 82571 2020-03-19 09:57:22
+#> 1     8131    71635    2805   132 82571 2020-03-19 12:13:27
 ```
 
 Or the same by state:
@@ -95,6 +95,11 @@ get_states_daily(
   - State breakdowns include DC as well as some US territories including
     American Samoa (AS), Guam (GU), Northern Mariana Islands (MP),
     Puerto Rico (PR), and the Virgin Islands (VI)
+
+  - Acronyms
+    
+      - PUI: persons under investigation
+      - PUM: persons under monitoring (one step before PUI)
 
   - Time zone used is Eastern Standard Time
 

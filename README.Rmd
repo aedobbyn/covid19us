@@ -73,6 +73,10 @@ get_us_daily
 
 * State breakdowns include DC as well as some US territories including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Puerto Rico (PR), and the Virgin Islands (VI)
 
+* Acronyms
+  * PUI: persons under investigation
+  * PUM: persons under monitoring (one step before PUI)
+
 * Time zone used is Eastern Standard Time
 
 ***
