@@ -6,8 +6,9 @@
 \alias{covid19us-package}
 \title{covid19us: Cases of COVID-19 in the United States}
 \description{
-This package provides data on US cases of
-    COVID-19 from the COVID Tracking Project API <https://covidtracking.com/api/>.
+A wrapper around the COVID Tracking Project API
+    <https://covidtracking.com/api/> providing data on cases of COVID-19
+    in the US.
 }
 \author{
 \strong{Maintainer}: Amanda Dobbyn \email{amanda.e.dobbyn@gmail.com}
