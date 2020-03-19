@@ -14,9 +14,6 @@ knitr::opts_chunk$set(
 # covid19us
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/aedobbyn/covid.svg?branch=master)](https://travis-ci.org/aedobbyn/covid)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid?branch=master&svg=true)](https://ci.appveyor.com/project/aedobbyn/covid)
-[![Codecov test coverage](https://codecov.io/gh/aedobbyn/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid?branch=master)
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project API](https://covidtracking.com/api/). It provides updates on the spread of the virus in the US with a few simple functions.

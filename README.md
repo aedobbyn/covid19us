@@ -3,12 +3,6 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/aedobbyn/covid.svg?branch=master)](https://travis-ci.org/aedobbyn/covid)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid?branch=master&svg=true)](https://ci.appveyor.com/project/aedobbyn/covid)
-[![Codecov test
-coverage](https://codecov.io/gh/aedobbyn/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid?branch=master)
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project
@@ -34,7 +28,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative pending death total request_datetime   
 #>      <int>    <int>   <int> <int> <int> <dttm>             
-#> 1     8131    71635    2805   132 82571 2020-03-19 09:19:09
+#> 1     8131    71635    2805   132 82571 2020-03-19 09:30:26
 ```
 
 Or the same by state:
