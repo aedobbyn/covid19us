@@ -6,3 +6,4 @@
 ^appveyor\.yml$
 ^\.covrignore$
 ^codecov\.yml$
+^cran-comments\.md$

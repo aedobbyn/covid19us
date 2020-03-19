@@ -2,19 +2,24 @@ test_that("get_states_daily works", {
   # Many rows
   full <- get_states_daily()
 
-  # One row
+  # One state
+  ct <- get_states_daily("CT")
+
+  # One one state one date
   specific <- get_states_daily("NY", "2020-03-17")
 
   # Zero rows
-  too_early <- get_states_daily("2019-08-25")
+  too_early <- get_states_daily(date = "2019-08-25")
 
   nms <-
     c("date", "state", "positive", "negative", "pending", "death", "total", "date_checked", "request_datetime")
 
   expect_named(full, nms)
+  expect_named(ct, nms)
   expect_named(specific, nms)
 
   expect_gte(nrow(full), 500)
+  expect_gte(nrow(ct), 10)
   expect_equal(nrow(specific), 1)
   expect_equal(nrow(too_early), 0)
 })
