@@ -2,15 +2,15 @@
 % Please edit documentation in R/get.R
 \name{get_states_info}
 \alias{get_states_info}
-\title{Get information in each state}
+\title{Get COVID-related information for each state}
 \usage{
 get_states_info()
 }
 \value{
-
+A tibble with one row per state incluing information on the state's \code{data_site} where the data was pulled from and the \code{covid_19_site} where data is published.
 }
 \description{
-Get information in each state
+Get COVID-related information for each state
 }
 \examples{
 \dontrun{

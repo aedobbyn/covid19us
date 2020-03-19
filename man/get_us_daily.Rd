@@ -7,7 +7,7 @@
 get_us_daily()
 }
 \value{
-
+A tibble with one row per date in which data is available and counts for each of those states.
 }
 \description{
 Updated every day at 4pm.

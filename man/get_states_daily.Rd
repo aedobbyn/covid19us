@@ -12,16 +12,17 @@ get_states_daily(state = "all", date = "all")
 \item{date}{For a specific date, a character or date vector of length 1 coercible to a date with \code{lubridate::as_date()}.}
 }
 \value{
-
+A tibble with one row per state for all dates available with columns for individuals' COVID statuses (positive, negative, pending, death) and their total.
 }
 \description{
-Updated every day at 4pm.
+Daily counts are updated every day at 4pm EST. This is the only function that takes arguments.
 }
 \examples{
 \dontrun{
 get_states_daily()
 
 get_states_daily("NY", "2020-03-17")
-get_states_daily("WA")
+get_states_daily(state = "WA")
+get_states_daily(date = "2020-03-11")
 }
 }

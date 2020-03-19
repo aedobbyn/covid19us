@@ -7,7 +7,7 @@
 get_us_current()
 }
 \value{
-
+A tibble with one row for the current count of the country's COVID statuses.
 }
 \description{
 Get current US counts

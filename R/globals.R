@@ -12,6 +12,7 @@ globalVariables(
     "get_us_daily",
     "last_update",
     "name",
-    "state"
+    "state",
+    "states"
   )
 )

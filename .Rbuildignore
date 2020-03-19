@@ -3,3 +3,6 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^\.travis\.yml$
+^appveyor\.yml$
+^\.covrignore$
+^codecov\.yml$

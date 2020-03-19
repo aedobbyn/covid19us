@@ -5,11 +5,15 @@
 
 [![Travis build
 status](https://travis-ci.org/aedobbyn/covid.svg?branch=master)](https://travis-ci.org/aedobbyn/covid)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid?branch=master&svg=true)](https://ci.appveyor.com/project/aedobbyn/covid)
+[![Codecov test
+coverage](https://codecov.io/gh/aedobbyn/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid?branch=master)
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project
 API](https://covidtracking.com/api/). It provides updates on the spread
-of the virus in the US.
+of the virus in the US with a few simple functions.
 
 ## Installation
 
@@ -17,9 +21,60 @@ of the virus in the US.
 devtools::install_github("aedobbyn/covid")
 ```
 
-## Functions
+## Examples
 
-    get_counties
+``` r
+library(covid)
+```
+
+Get the most recent COVID-19 top-line data for the country:
+
+``` r
+get_us_current()
+#> # A tibble: 1 x 6
+#>   positive negative pending death total request_datetime   
+#>      <int>    <int>   <int> <int> <int> <dttm>             
+#> 1     8131    71635    2805   132 82571 2020-03-19 07:55:17
+```
+
+Or, more specifically, the most up-to-date data for all states:
+
+``` r
+get_states_current()
+#> # A tibble: 56 x 9
+#>    state positive negative pending death total last_update        
+#>    <chr>    <int>    <int>   <int> <int> <int> <dttm>             
+#>  1 AK           6      400      NA    NA   406 2020-03-18 16:30:00
+#>  2 AL          51       28      NA     0    79 2020-03-18 17:10:00
+#>  3 AR          37      284     112    NA   433 2020-03-18 18:34:00
+#>  4 AS           0       NA      NA     0     0 2020-03-14 00:00:00
+#>  5 AZ          28      148     102     0   278 2020-03-18 00:00:00
+#>  6 CA         611     7981      NA    13  8592 2020-03-17 21:00:00
+#>  7 CO         216     2112      NA     2  2328 2020-03-18 18:30:00
+#>  8 CT          96      604      NA     1   700 2020-03-18 22:00:00
+#>  9 DC          39      153      11    NA   203 2020-03-18 19:00:00
+#> 10 DE          26       36      NA    NA    62 2020-03-18 13:50:00
+#> # … with 46 more rows, and 2 more variables: check_time <dttm>,
+#> #   request_datetime <dttm>
+```
+
+Or get specific information for a given state-date combination:
+
+``` r
+get_states_daily(
+  state = "NY", 
+  date = "2020-03-17"
+)
+#> # A tibble: 1 x 9
+#>   date       state positive negative pending death total date_checked       
+#>   <date>     <chr>    <int>    <int> <lgl>   <int> <int> <dttm>             
+#> 1 2020-03-17 NY        1700     5506 NA          7  7206 2020-03-17 20:00:00
+#> # … with 1 more variable: request_datetime <dttm>
+```
+
+## All Functions
+
+    get_counties_info
     get_states_current
     get_states_daily
     get_states_info
@@ -27,38 +82,25 @@ devtools::install_github("aedobbyn/covid")
     get_us_current
     get_us_daily
 
-## Example
+## Other Details
 
-``` r
-library(covid)
-```
+  - All of the data sources can be found with `get_tracker_urls()`,
+    which also includes a `filter` column
+    
+      - This column gives information about how the [COVID Tracking
+        Project’s
+        scraper](https://github.com/COVID19Tracking/covid-tracking)
+        currently scrapes data from the page (xpath or CSS selectors as
+        well as the function used in scraping)
 
-Get the most up-to-date data for all states:
+  - `state`s also include DC as well as US territories including
+    American Samoa (AS), Guam (GU), Northern Mariana Islands (MP),
+    Puerto Rico (PR), Virgin Islands (VI)
 
-``` r
-get_states_current()
-#> # A tibble: 56 x 8
-#>    state positive negative pending death total last_update_et check_time_et
-#>    <chr>    <int>    <int>   <int> <int> <int> <chr>          <chr>        
-#>  1 AK           3      334      NA    NA   337 3/17 14:30     3/17 21:54   
-#>  2 AL          39       28      NA     0    67 3/17 16:30     3/17 21:54   
-#>  3 AR          22      197      41    NA   260 3/17 00:00     3/17 21:53   
-#>  4 AS           0       NA      NA    NA     0 3/14 00:00     3/17 22:43   
-#>  5 AZ          20      142      66     0   228 3/17 00:00     3/17 21:33   
-#>  6 CA         483     7981      NA    11  8464 3/16 21:00     3/17 21:57   
-#>  7 CO         160     1056      NA     1  1216 3/16 17:00     3/17 21:58   
-#>  8 CT          68      125      NA    NA   193 3/17 16:30     3/17 21:59   
-#>  9 DC          31      138       1    NA   170 3/17 19:00     3/17 21:37   
-#> 10 DE          16       36      NA    NA    52 3/17 15:55     3/17 22:00   
-#> # … with 46 more rows
-```
+  - Time zone used is Eastern Standard Time
 
-Or get specific information for a given state-date combination.
+-----
 
-``` r
-get_states_daily("NY", "2020-03-17")
-#> # A tibble: 1 x 8
-#>       date state positive negative pending death total dateChecked         
-#>      <int> <chr>    <int>    <int> <lgl>   <int> <int> <chr>               
-#> 1 20200317 NY        1700     5506 NA          7  7206 2020-03-17T20:00:00Z
-```
+**[PR](https://github.com/aedobbyn/covid/pulls)s and [bug reports /
+feature requests](https://github.com/aedobbyn/covid/issues) welcome.**
+Stay safe\!

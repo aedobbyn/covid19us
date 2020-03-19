@@ -1,42 +1,3 @@
-#' @import dplyr
-
-base_url <- "https://covidtracking.com/api/"
-
-request <- function(url) {
-  resp <-
-    httr::GET(url) %>%
-    httr::stop_for_status()
-
-  lst <- httr::content(resp)
-
-  if (length(lst) == 0) {
-    message("No results for this request.")
-    return(tibble::tibble())
-  }
-
-  # Only one result
-  if (length(lst[[1]]) == 1) {
-    return(
-      lst %>%
-        purrr::map(replace_null) %>%
-        tibble::as_tibble()
-    )
-  }
-
-  lst %>%
-    purrr::modify_depth(2, replace_null) %>%
-    purrr::map(tibble::as_tibble) %>%
-    bind_rows() %>%
-    rename_all(
-      snakecase::to_snake_case
-    )
-}
-
-get <- function(endpoint, query = "") {
-  url <- glue::glue("{base_url}{endpoint}{query}")
-  request(url)
-}
-
 #' Get current counts for every state
 #'
 #' @return A tibble with one row per state and columns for individuals' COVID statuses (positive, negative, pending, death) and their total.
@@ -47,21 +8,12 @@ get <- function(endpoint, query = "") {
 #' get_states_current()
 #' }
 get_states_current <- function() {
-  get("states") %>%
-    # Remove Eastern Time
-    rename_all(
-      stringr::str_remove_all,
-      "_et"
-    ) %>%
-    mutate_at(
-      vars(last_update, check_time),
-      clean_date
-    )
+  get("states")
 }
 
 #' Get daily counts for every state
 #'
-#' Updated every day at 4pm.
+#' Daily counts are updated every day at 4pm EST. This is the only function that takes arguments.
 #'
 #' @param state State abbreviation for a specific state or all states with \code{"all"}.
 #' @param date For a specific date, a character or date vector of length 1 coercible to a date with \code{lubridate::as_date()}.
@@ -74,10 +26,10 @@ get_states_current <- function() {
 #' get_states_daily()
 #'
 #' get_states_daily("NY", "2020-03-17")
-#' get_states_daily("WA")
+#' get_states_daily(state = "WA")
+#' get_states_daily(date = "2020-03-11")
 #' }
 get_states_daily <- function(state = "all", date = "all") {
-
   if (state == "all" && date == "all") {
     q <- ""
   } else {
@@ -88,24 +40,20 @@ get_states_daily <- function(state = "all", date = "all") {
       # All states, specific date
       if (state == "all") {
         q <- glue::glue("?date={date}")
-      # Specific state and specific date
+        # Specific state and specific date
       } else {
         q <- glue::glue("?state={state}&date={date}")
       }
-    # Specific state, all dates
+      # Specific state, all dates
     } else {
       q <- glue::glue("?state={state}")
     }
   }
 
-  get("states/daily", query = q) %>%
-    mutate_at(
-      vars(date, date_checked),
-      clean_date
-    )
+  get("states/daily", query = q)
 }
 
-#' Get information in each state
+#' Get COVID-related information for each state
 #'
 #' @return A tibble with one row per state incluing information on the state's \code{data_site} where the data was pulled from and the \code{covid_19_site} where data is published.
 #' @export
@@ -151,24 +99,23 @@ get_us_daily <- function() {
     rename(
       n_states = states
     ) %>%
-    mutate(
-      date = clean_date(date)
-    ) %>%
     arrange(
       desc(date)
     )
 }
 
-#' Get counts by US county
+#' Get COVID-related information for certain counties
 #'
-#' @return
+#' Currently limited to the worst-affected counties in mostly Washington state, California, and New York.
+#'
+#' @return A tibble with one row per county and their COVID website information.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' get_counties()
+#' get_counties_info()
 #' }
-get_counties <- function() {
+get_counties_info <- function() {
   get("counties")
 }
 
@@ -184,6 +131,11 @@ get_counties <- function() {
 #' get_tracker_urls()
 #' }
 get_tracker_urls <- function() {
-  get("urls")
+  get("urls") %>%
+    rename(
+      state_name = name
+    ) %>%
+    select(
+      state_name, url, filter, ssl_no_verify, kind
+    )
 }
-

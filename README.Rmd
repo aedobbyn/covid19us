@@ -15,26 +15,16 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/aedobbyn/covid.svg?branch=master)](https://travis-ci.org/aedobbyn/covid)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid?branch=master&svg=true)](https://ci.appveyor.com/project/aedobbyn/covid)
+[![Codecov test coverage](https://codecov.io/gh/aedobbyn/covid/branch/master/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid?branch=master)
 <!-- badges: end -->
 
-This is an R wrapper around the [COVID Tracking Project API](https://covidtracking.com/api/). It provides updates on the spread of the virus in the US.
+This is an R wrapper around the [COVID Tracking Project API](https://covidtracking.com/api/). It provides updates on the spread of the virus in the US with a few simple functions.
 
 ## Installation
 
 ``` r
 devtools::install_github("aedobbyn/covid")
-```
-
-## Functions
-
-```
-get_counties
-get_states_current
-get_states_daily
-get_states_info
-get_tracker_urls
-get_us_current
-get_us_daily
 ```
 
 ## Examples
@@ -43,16 +33,48 @@ get_us_daily
 library(covid)
 ```
 
-Get the most up-to-date data for all states:
+Get the most recent COVID-19 top-line data for the country:
+
+```{r}
+get_us_current()
+```
+
+Or, more specifically, the most up-to-date data for all states:
 
 ```{r}
 get_states_current()
 ```
 
-
-Or get specific information for a given state-date combination.
+Or get specific information for a given state-date combination:
 
 ```{r}
-get_states_daily("NY", "2020-03-17")
+get_states_daily(
+  state = "NY", 
+  date = "2020-03-17"
+)
 ```
 
+## All Functions
+
+```
+get_counties_info
+get_states_current
+get_states_daily
+get_states_info
+get_tracker_urls
+get_us_current
+get_us_daily
+```
+
+## Other Details
+
+* All of the data sources can be found with `get_tracker_urls()`, which also includes a `filter` column
+  * This column gives information about how the [COVID Tracking Project's scraper](https://github.com/COVID19Tracking/covid-tracking) currently scrapes data from the page (xpath or CSS selectors as well as the function used in scraping)
+
+* `state`s also include DC as well as US territories including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Puerto Rico (PR), Virgin Islands (VI)
+
+* Time zone used is Eastern Standard Time
+
+***
+
+**[PR](https://github.com/aedobbyn/covid/pulls)s and [bug reports / feature requests](https://github.com/aedobbyn/covid/issues) welcome.** Stay safe!
