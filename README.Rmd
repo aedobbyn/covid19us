@@ -37,7 +37,7 @@ get_us_current
 get_us_daily
 ```
 
-## Example
+## Examples
 
 ```{r example}
 library(covid)

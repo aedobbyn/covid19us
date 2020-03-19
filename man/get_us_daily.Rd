@@ -14,6 +14,6 @@ Updated every day at 4pm.
 }
 \examples{
 \dontrun{
-get_us_current()
+get_us_daily()
 }
 }

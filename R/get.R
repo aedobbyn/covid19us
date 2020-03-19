@@ -1,3 +1,4 @@
+#' @import dplyr
 
 base_url <- "https://covidtracking.com/api/"
 
@@ -25,8 +26,8 @@ request <- function(url) {
   lst %>%
     purrr::modify_depth(2, replace_null) %>%
     purrr::map(tibble::as_tibble) %>%
-    dplyr::bind_rows() %>%
-    dplyr::rename_all(
+    bind_rows() %>%
+    rename_all(
       snakecase::to_snake_case
     )
 }
@@ -38,7 +39,7 @@ get <- function(endpoint, query = "") {
 
 #' Get current counts for every state
 #'
-#' @return
+#' @return A tibble with one row per state and columns for individuals' COVID statuses (positive, negative, pending, death) and their total.
 #' @export
 #'
 #' @examples
@@ -46,7 +47,16 @@ get <- function(endpoint, query = "") {
 #' get_states_current()
 #' }
 get_states_current <- function() {
-  get("states")
+  get("states") %>%
+    # Remove Eastern Time
+    rename_all(
+      stringr::str_remove_all,
+      "_et"
+    ) %>%
+    mutate_at(
+      vars(last_update, check_time),
+      clean_date
+    )
 }
 
 #' Get daily counts for every state
@@ -56,7 +66,7 @@ get_states_current <- function() {
 #' @param state State abbreviation for a specific state or all states with \code{"all"}.
 #' @param date For a specific date, a character or date vector of length 1 coercible to a date with \code{lubridate::as_date()}.
 #'
-#' @return
+#' @return A tibble with one row per state for all dates available with columns for individuals' COVID statuses (positive, negative, pending, death) and their total.
 #' @export
 #'
 #' @examples
@@ -88,12 +98,16 @@ get_states_daily <- function(state = "all", date = "all") {
     }
   }
 
-  get("states/daily", query = q)
+  get("states/daily", query = q) %>%
+    mutate_at(
+      vars(date, date_checked),
+      clean_date
+    )
 }
 
 #' Get information in each state
 #'
-#' @return
+#' @return A tibble with one row per state incluing information on the state's \code{data_site} where the data was pulled from and the \code{covid_19_site} where data is published.
 #' @export
 #'
 #' @examples
@@ -101,12 +115,16 @@ get_states_daily <- function(state = "all", date = "all") {
 #' get_states_info()
 #' }
 get_states_info <- function() {
-  get("states/info")
+  get("states/info") %>%
+    select(
+      state, name,
+      everything()
+    )
 }
 
 #' Get current US counts
 #'
-#' @return
+#' @return A tibble with one row for the current count of the country's COVID statuses.
 #' @export
 #'
 #' @examples
@@ -121,15 +139,24 @@ get_us_current <- function() {
 #'
 #' Updated every day at 4pm.
 #'
-#' @return
+#' @return A tibble with one row per date in which data is available and counts for each of those states.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' get_us_current()
+#' get_us_daily()
 #' }
 get_us_daily <- function() {
-  get("us/daily")
+  get("us/daily") %>%
+    rename(
+      n_states = states
+    ) %>%
+    mutate(
+      date = clean_date(date)
+    ) %>%
+    arrange(
+      desc(date)
+    )
 }
 
 #' Get counts by US county
