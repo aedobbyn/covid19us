@@ -1,5 +1,5 @@
 
-# covid
+# covid19us
 
 <!-- badges: start -->
 
@@ -34,7 +34,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative pending death total request_datetime   
 #>      <int>    <int>   <int> <int> <int> <dttm>             
-#> 1     8131    71635    2805   132 82571 2020-03-19 08:18:05
+#> 1     8131    71635    2805   132 82571 2020-03-19 09:19:09
 ```
 
 Or the same by state:

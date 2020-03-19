@@ -1,5 +1,5 @@
-Package: covid
-Title: Wrapper for the COVID Tracking Project API
+Package: covid19us
+Title: Cases of COVID-19 in the United States
 Version: 0.1.0
 Authors@R: 
     person(given = "Amanda",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "amanda.e.dobbyn@gmail.com")
 Description: This package provides data on US cases of
-    COVID-19.
+    COVID-19 from the COVID Tracking Project API <https://covidtracking.com/api/>.
 License: MIT + file LICENSE
 Imports:
     dplyr (>= 0.8.3),
