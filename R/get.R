@@ -136,6 +136,6 @@ get_tracker_urls <- function() {
       state_name = name
     ) %>%
     select(
-      state_name, url, filter, ssl_no_verify, kind
+      state_name, url, filter, ssl_no_verify, kind, request_datetime
     )
 }

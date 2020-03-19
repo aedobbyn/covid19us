@@ -34,7 +34,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative pending death total request_datetime   
 #>      <int>    <int>   <int> <int> <int> <dttm>             
-#> 1     8131    71635    2805   132 82571 2020-03-19 07:55:17
+#> 1     8131    71635    2805   132 82571 2020-03-19 08:01:53
 ```
 
 Or, more specifically, the most up-to-date data for all states:
@@ -84,11 +84,10 @@ get_states_daily(
 
 ## Other Details
 
-  - All of the data sources can be found with `get_tracker_urls()`,
-    which also includes a `filter` column
+  - All of the data sources can be found with `get_tracker_urls()`
     
-      - This column gives information about how the [COVID Tracking
-        Project’s
+      - The `filter` column gives information about how the [COVID
+        Tracking Project’s
         scraper](https://github.com/COVID19Tracking/covid-tracking)
         currently scrapes data from the page (xpath or CSS selectors as
         well as the function used in scraping)

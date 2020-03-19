@@ -68,8 +68,8 @@ get_us_daily
 
 ## Other Details
 
-* All of the data sources can be found with `get_tracker_urls()`, which also includes a `filter` column
-  * This column gives information about how the [COVID Tracking Project's scraper](https://github.com/COVID19Tracking/covid-tracking) currently scrapes data from the page (xpath or CSS selectors as well as the function used in scraping)
+* All of the data sources can be found with `get_tracker_urls()`
+  * The `filter` column gives information about how the [COVID Tracking Project's scraper](https://github.com/COVID19Tracking/covid-tracking) currently scrapes data from the page (xpath or CSS selectors as well as the function used in scraping)
 
 * `state`s also include DC as well as US territories including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Puerto Rico (PR), Virgin Islands (VI)
 

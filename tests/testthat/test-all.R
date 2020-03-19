@@ -9,7 +9,7 @@ test_that("get_states_daily works", {
   too_early <- get_states_daily("2019-08-25")
 
   nms <-
-    c("date", "state", "positive", "negative", "pending", "death", "total", "date_checked")
+    c("date", "state", "positive", "negative", "pending", "death", "total", "date_checked", "request_datetime")
 
   expect_named(full, nms)
   expect_named(specific, nms)
@@ -31,7 +31,7 @@ test_that("other funs work", {
 
   states_info <- get_states_info()
   states_info_nms <-
-    c("state", "name", "data_site", "covid_19_site", "twitter", "pui", "pum", "notes")
+    c("state", "name", "data_site", "covid_19_site", "twitter", "pui", "pum", "notes", "request_datetime")
   expect_named(states_info, states_info_nms)
 
   us_current <- get_us_current()
@@ -44,6 +44,6 @@ test_that("other funs work", {
   expect_gte(length(unique(counties_info$state)), 3)
 
   urls <- get_tracker_urls()
-  url_names <- c("state_name", "url", "filter", "ssl_no_verify", "kind")
+  url_names <- c("state_name", "url", "filter", "ssl_no_verify", "kind", "request_datetime")
   expect_named(urls, url_names)
 })
