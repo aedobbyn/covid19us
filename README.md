@@ -24,7 +24,7 @@ devtools::install_github("aedobbyn/covid19us")
 ## Examples
 
 ``` r
-library(covid)
+library(covid19us)
 ```
 
 Get the most recent COVID-19 top-line data for the country:
@@ -34,7 +34,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative pending death total request_datetime   
 #>      <int>    <int>   <int> <int> <int> <dttm>             
-#> 1     8131    71635    2805   132 82571 2020-03-19 09:41:33
+#> 1     8131    71635    2805   132 82571 2020-03-19 09:45:22
 ```
 
 Or the same by state:
@@ -100,6 +100,6 @@ get_states_daily(
 
 -----
 
-**[PR](https://github.com/aedobbyn/covid/pulls)s and [bug reports /
-feature requests](https://github.com/aedobbyn/covid/issues) welcome.**
-Stay safe\!
+**[PR](https://github.com/aedobbyn/covid19us/pulls)s and [bug reports /
+feature requests](https://github.com/aedobbyn/covid19us/issues)
+welcome.** Stay safe\!

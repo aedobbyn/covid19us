@@ -30,7 +30,7 @@ devtools::install_github("aedobbyn/covid19us")
 ## Examples
 
 ```{r example}
-library(covid)
+library(covid19us)
 ```
 
 Get the most recent COVID-19 top-line data for the country:
@@ -77,4 +77,4 @@ get_us_daily
 
 ***
 
-**[PR](https://github.com/aedobbyn/covid/pulls)s and [bug reports / feature requests](https://github.com/aedobbyn/covid/issues) welcome.** Stay safe!
+**[PR](https://github.com/aedobbyn/covid19us/pulls)s and [bug reports / feature requests](https://github.com/aedobbyn/covid19us/issues) welcome.** Stay safe!
