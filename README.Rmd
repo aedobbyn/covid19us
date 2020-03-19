@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 # covid19us
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/aedobbyn/covid19us.svg?branch=master)](https://travis-ci.org/aedobbyn/covid19us)
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project API](https://covidtracking.com/api/). It provides updates on the spread of the virus in the US with a few simple functions.
@@ -21,7 +22,7 @@ This is an R wrapper around the [COVID Tracking Project API](https://covidtracki
 ## Installation
 
 ``` r
-devtools::install_github("aedobbyn/covid")
+devtools::install_github("aedobbyn/covid19us")
 ```
 
 ## Examples

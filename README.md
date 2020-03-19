@@ -3,6 +3,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/aedobbyn/covid19us.svg?branch=master)](https://travis-ci.org/aedobbyn/covid19us)
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project
@@ -12,7 +14,7 @@ of the virus in the US with a few simple functions.
 ## Installation
 
 ``` r
-devtools::install_github("aedobbyn/covid")
+devtools::install_github("aedobbyn/covid19us")
 ```
 
 ## Examples
@@ -28,7 +30,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative pending death total request_datetime   
 #>      <int>    <int>   <int> <int> <int> <dttm>             
-#> 1     8131    71635    2805   132 82571 2020-03-19 09:30:26
+#> 1     8131    71635    2805   132 82571 2020-03-19 09:39:00
 ```
 
 Or the same by state:
