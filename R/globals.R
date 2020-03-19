@@ -1,6 +1,7 @@
 
 globalVariables(
   c(
+    ".",
     "check_time",
     "date_checked",
     "get_counties",
@@ -10,9 +11,13 @@ globalVariables(
     "get_tracker_urls",
     "get_us_current",
     "get_us_daily",
+    "kind",
     "last_update",
     "name",
+    "request_datetime",
+    "ssl_no_verify",
     "state",
+    "state_name",
     "states"
   )
 )

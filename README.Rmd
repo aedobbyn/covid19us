@@ -39,13 +39,13 @@ Get the most recent COVID-19 top-line data for the country:
 get_us_current()
 ```
 
-Or, more specifically, the most up-to-date data for all states:
+Or the same by state:
 
 ```{r}
 get_states_current()
 ```
 
-Or get specific information for a given state-date combination:
+Daily state counts can be filtered by state and/or date:
 
 ```{r}
 get_states_daily(
@@ -69,9 +69,9 @@ get_us_daily
 ## Other Details
 
 * All of the data sources can be found with `get_tracker_urls()`
-  * The `filter` column gives information about how the [COVID Tracking Project's scraper](https://github.com/COVID19Tracking/covid-tracking) currently scrapes data from the page (xpath or CSS selectors as well as the function used in scraping)
+  * The `filter` column gives information about how the [COVID Tracking Project's scraper](https://github.com/COVID19Tracking/covid-tracking) currently scrapes data from the page (xpaths, CSS selectors, functions used, etc.)
 
-* `state`s also include DC as well as US territories including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Puerto Rico (PR), Virgin Islands (VI)
+* State breakdowns include DC as well as some US territories including American Samoa (AS), Guam (GU), Northern Mariana Islands (MP), Puerto Rico (PR), and the Virgin Islands (VI)
 
 * Time zone used is Eastern Standard Time
 

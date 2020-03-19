@@ -121,9 +121,7 @@ get_counties_info <- function() {
 
 #' Get URLs and their details for each state
 #'
-#' Includes the xpath css selector used to get data.
-#'
-#' @return
+#' @return A tibble with one row for every state, the URL used by scrapers to get data, and a \code{filter} column that provices the xpath or CSS selector used by the \href{https://github.com/COVID19Tracking/covid-tracking}{COVID-19 Tracking Project's scraper} to get this data.
 #' @export
 #'
 #' @examples
