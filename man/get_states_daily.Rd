@@ -18,7 +18,7 @@ A tibble with one row per state for all dates available with columns for individ
 Daily counts are updated every day at 4pm EST. This is the only function that takes arguments.
 }
 \examples{
-\dontrun{
+\donttest{
 get_states_daily()
 
 get_states_daily("NY", "2020-03-17")

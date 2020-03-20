@@ -6,7 +6,7 @@
 \alias{covid19us-package}
 \title{covid19us: Cases of COVID-19 in the United States}
 \description{
-A wrapper around the COVID Tracking Project API
+A wrapper around the 'COVID Tracking Project API'
     <https://covidtracking.com/api/> providing data on cases of COVID-19
     in the US.
 }

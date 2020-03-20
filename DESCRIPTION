@@ -6,7 +6,7 @@ Authors@R:
            family = "Dobbyn",
            role = c("aut", "cre"),
            email = "amanda.e.dobbyn@gmail.com")
-Description: A wrapper around the COVID Tracking Project API
+Description: A wrapper around the 'COVID Tracking Project API'
     <https://covidtracking.com/api/> providing data on cases of COVID-19
     in the US.
 License: MIT + file LICENSE

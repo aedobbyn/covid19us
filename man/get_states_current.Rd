@@ -13,7 +13,7 @@ A tibble with one row per state and columns for individuals' COVID statuses (pos
 Get current counts for every state
 }
 \examples{
-\dontrun{
+\donttest{
 get_states_current()
 }
 }

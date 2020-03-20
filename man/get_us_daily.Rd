@@ -13,7 +13,7 @@ A tibble with one row per date in which data is available and counts for each of
 Updated every day at 4pm.
 }
 \examples{
-\dontrun{
+\donttest{
 get_us_daily()
 }
 }

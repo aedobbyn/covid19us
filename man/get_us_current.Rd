@@ -13,7 +13,7 @@ A tibble with one row for the current count of the country's COVID statuses.
 Get current US counts
 }
 \examples{
-\dontrun{
+\donttest{
 get_us_current()
 }
 }

@@ -4,7 +4,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_states_current()
 #' }
 get_states_current <- function() {
@@ -22,7 +22,7 @@ get_states_current <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_states_daily()
 #'
 #' get_states_daily("NY", "2020-03-17")
@@ -59,7 +59,7 @@ get_states_daily <- function(state = "all", date = "all") {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_states_info()
 #' }
 get_states_info <- function() {
@@ -76,7 +76,7 @@ get_states_info <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_us_current()
 #' }
 get_us_current <- function() {
@@ -91,7 +91,7 @@ get_us_current <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_us_daily()
 #' }
 get_us_daily <- function() {
@@ -112,7 +112,7 @@ get_us_daily <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_counties_info()
 #' }
 get_counties_info <- function() {
@@ -125,7 +125,7 @@ get_counties_info <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_tracker_urls()
 #' }
 get_tracker_urls <- function() {

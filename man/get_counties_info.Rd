@@ -13,7 +13,7 @@ A tibble with one row per county and their COVID website information.
 Currently limited to the worst-affected counties in mostly Washington state, California, and New York.
 }
 \examples{
-\dontrun{
+\donttest{
 get_counties_info()
 }
 }

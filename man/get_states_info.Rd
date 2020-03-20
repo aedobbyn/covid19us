@@ -13,7 +13,7 @@ A tibble with one row per state incluing information on the state's \code{data_s
 Get COVID-related information for each state
 }
 \examples{
-\dontrun{
+\donttest{
 get_states_info()
 }
 }

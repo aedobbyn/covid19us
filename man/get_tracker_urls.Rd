@@ -13,7 +13,7 @@ A tibble with one row for every state, the URL used by scrapers to get data, and
 Get URLs and their details for each state
 }
 \examples{
-\dontrun{
+\donttest{
 get_tracker_urls()
 }
 }
