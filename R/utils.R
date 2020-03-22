@@ -2,7 +2,7 @@ base_url <- "https://covidtracking.com/api/"
 
 request <- function(url) {
   resp <-
-    httr::GET(url) %>%
+    httr::RETRY("GET", url) %>%
     httr::stop_for_status()
 
   lst <- httr::content(resp)

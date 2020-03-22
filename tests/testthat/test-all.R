@@ -38,10 +38,8 @@ test_that("other funs work", {
   }
 
   states_info <- get_states_info()
-  states_info_nms <-
-    c("state", "name", "covid_19_site_old", "covid_19_site", "covid_19_site_secondary", "twitter", "pui", "pum", "notes", "request_datetime")
   if (nrow(states_info) > 0) {
-    expect_named(states_info, states_info_nms)
+    expect_gte(ncol(states_info), 6)
   }
 
   us_current <- get_us_current()
