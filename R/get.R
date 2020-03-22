@@ -63,7 +63,13 @@ get_states_daily <- function(state = "all", date = "all") {
 #' get_states_info()
 #' }
 get_states_info <- function() {
-  get("states/info") %>%
+  tbl <- get("states/info")
+
+  if (nrow(tbl) == 0) {
+    return(tbl)
+  }
+
+  tbl %>%
     select(
       state, name,
       everything()
@@ -95,7 +101,14 @@ get_us_current <- function() {
 #' get_us_daily()
 #' }
 get_us_daily <- function() {
-  get("us/daily") %>%
+
+  tbl <- get("us/daily")
+
+  if (nrow(tbl) == 0) {
+    return(tbl)
+  }
+
+  tbl %>%
     rename(
       n_states = states
     ) %>%
@@ -129,7 +142,13 @@ get_counties_info <- function() {
 #' get_tracker_urls()
 #' }
 get_tracker_urls <- function() {
-  get("urls") %>%
+  tbl <- get("urls")
+
+  if (nrow(tbl) == 0) {
+    return(tbl)
+  }
+
+  tbl %>%
     rename(
       state_name = name
     ) %>%
