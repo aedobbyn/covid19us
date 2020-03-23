@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/aedobbyn/covid19us/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid19us)
 [![CRAN status](https://www.r-pkg.org/badges/version/covid19us)](https://CRAN.R-project.org/package=covid19us)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+<!-- [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/covid19us)](https://github.com/metacran/cranlogs.app) -->
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project API](https://covidtracking.com/api/). It provides updates on the spread of the virus in the US with a few simple functions.
