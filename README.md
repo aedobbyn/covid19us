@@ -11,6 +11,8 @@ status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid19us?br
 coverage](https://codecov.io/gh/aedobbyn/covid19us/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid19us)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/covid19us)](https://CRAN.R-project.org/package=covid19us)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
 This is an R wrapper around the [COVID Tracking Project
@@ -19,15 +21,11 @@ of the virus in the US with a few simple functions.
 
 ## Installation
 
-``` r
-install.packages("covid19us")
-```
+    install.packages("covid19us")
 
 Or the dev version:
 
-``` r
-devtools::install_github("aedobbyn/covid19us")
-```
+    devtools::install_github("aedobbyn/covid19us")
 
 ## Examples
 
@@ -42,7 +40,7 @@ get_us_current()
 #> # A tibble: 1 x 6
 #>   positive negative hospitalized death  total request_datetime   
 #>      <int>    <int>        <int> <int>  <int> <dttm>             
-#> 1    32617   203389         2589   411 238632 2020-03-23 06:15:29
+#> 1    33277   210546         2615   418 246330 2020-03-23 17:02:01
 ```
 
 Or the same by state:
@@ -54,14 +52,14 @@ get_states_current()
 #>    <chr>    <int>          <int>          <int>            <int>
 #>  1 AK          22              1              1                1
 #>  2 AL         157              1              1                0
-#>  3 AR         165              1              1                1
+#>  3 AR         168              1              1                1
 #>  4 AZ         152              1              1                1
 #>  5 CA        1536              1              1                1
 #>  6 CO         591              1              1                1
 #>  7 CT         327              1              1                1
 #>  8 DC         116              1              1                1
-#>  9 DE          56              1              1                0
-#> 10 FL        1007              1              1                1
+#>  9 DE          68              1              1                0
+#> 10 FL        1171              1              1                1
 #> # … with 46 more rows, and 13 more variables: commercial_score <int>,
 #> #   grade <chr>, score <int>, negative <int>, pending <int>,
 #> #   hospitalized <int>, death <int>, total <int>, last_update <dttm>,
