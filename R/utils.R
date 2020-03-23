@@ -1,6 +1,6 @@
 base_url <- "https://covidtracking.com/api/"
 
-request <- function(url) {
+request <- function(url) { # nocov start
   resp <-
     httr::RETRY("GET", url) %>%
     httr::stop_for_status()
@@ -61,7 +61,7 @@ request <- function(url) {
     mutate(
       request_datetime = lubridate::now()
     )
-}
+} # nocov end
 
 try_request <- purrr::possibly(
   request,
