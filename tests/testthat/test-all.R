@@ -18,7 +18,7 @@ test_that("get_states_daily works", {
   if (nrow(full) > 0) expect_gte(nrow(full), 500)
   if (nrow(ct) > 0) expect_gte(nrow(ct), 10)
   if (nrow(specific) > 0) expect_equal(nrow(specific), 1)
-  expect_equal(nrow(too_early), 0)
+  expect_equal(too_early$error, TRUE)
 })
 
 test_that("other funs work", {
