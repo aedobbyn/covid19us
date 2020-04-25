@@ -62,16 +62,31 @@ get_states_daily(
 )
 ```
 
+For data in long format:
+
+```{r}
+refresh_covid19us()
+```
+
+And to get information about the data:
+
+```{r}
+get_info_covid19us()
+```
+
+
 ## All Functions
 
 ```
 get_counties_info
+get_info_covid19us
 get_states_current
 get_states_daily
 get_states_info
 get_tracker_urls
 get_us_current
 get_us_daily
+refresh_covid19us
 ```
 
 ## Other Details

@@ -101,7 +101,6 @@ get_us_current <- function() {
 #' get_us_daily()
 #' }
 get_us_daily <- function() {
-
   tbl <- get("us/daily")
 
   if (nrow(tbl) == 0) {
@@ -115,6 +114,77 @@ get_us_daily <- function() {
     arrange(
       desc(date)
     )
+}
+
+data_type_reg <- "death|hospitalized|icu|negative|pending|positive|recovered|total|ventilator"
+
+#' Get state data in long format
+#'
+#' @param type One of \code{"daily"} or \code{"current"}
+#'
+#' @return A tibble of data retrieved with \code{\link{get_states_daily}} or \code{\link{get_states_current}} in long format with a \code{data_type} and a \code{value} column.
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' refresh_covid19us()
+#' }
+refresh_covid19us <- function(type = "daily") {
+  stopifnot(type %in% c("daily", "current"))
+
+  fun <- ifelse(type == "daily", get_states_daily, get_states_current)
+
+  fun() %>%
+    tidyr::pivot_longer(
+      matches(data_type_reg),
+      names_to = "data_type"
+    ) %>%
+    mutate(
+      location_type = "state",
+      location_code_type = "fips_code"
+    ) %>%
+    select(
+      date,
+      location = state,
+      location_type,
+      location_code = fips,
+      location_code_type,
+      data_type,
+      value
+    )
+}
+#' Get info about this dataset
+#'
+#' @return A tibble with information about where the data is pulled from, details about the dataset, what the data types are, etc.
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' get_info_covid19us()
+#' }
+get_info_covid19us <- function() {
+  latest_data <- refresh_covid19us(type = "daily")
+
+  dplyr::tibble(
+    data_set_name = "covid19us",
+    package_name = "covid19us",
+    function_to_get_data = "refresh_covid19us",
+    data_details = "Open Source data from COVID Tracking Project on the distribution of Covid-19 cases and deaths in the US. For more, see https://github.com/opencovid19-fr/data.",
+    data_url = "https://covidtracking.com/api",
+    license_url = "https://github.com/aedobbyn/covid19us/blob/master/LICENSE.md",
+    data_types = latest_data %>%
+      tidyr::drop_na(data_type) %>%
+      dplyr::pull(data_type) %>%
+      unique() %>%
+      stringr::str_c(collapse = ", "),
+    location_types = latest_data %>%
+      tidyr::drop_na(location_type) %>%
+      dplyr::pull(location_type) %>%
+      unique() %>%
+      stringr::str_c(collapse = ", "),
+    spatial_extent = "country",
+    has_geospatial_info = FALSE
+  )
 }
 
 #' Get COVID-related information for certain counties

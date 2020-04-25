@@ -52,4 +52,10 @@ test_that("other funs work", {
 
   urls <- get_tracker_urls()
   if (nrow(urls) > 0) expect_gte(ncol(urls), 5)
+
+  refresh <- refresh_covid19us()
+  if (nrow(refresh) > 0) expect_gte(ncol(refresh), 5)
+
+  info <- refresh_covid19us()
+  if (nrow(info) > 0) expect_gte(ncol(info), 5)
 })

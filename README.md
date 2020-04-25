@@ -38,34 +38,43 @@ Get the most recent COVID-19 top-line data for the country:
 
 ``` r
 get_us_current()
-#> # A tibble: 1 x 6
-#>   positive negative hospitalized death  total request_datetime   
-#>      <int>    <int>        <int> <int>  <int> <dttm>             
-#> 1    33277   210546         2615   418 246330 2020-03-23 17:29:39
+#> # A tibble: 1 x 18
+#>   positive negative pending hospitalized_cu… hospitalized_cu… in_icu_currently
+#>      <int>    <int>   <int>            <int>            <int>            <int>
+#> 1   899281  4041095    4448            56006            93910            15098
+#> # … with 12 more variables: in_icu_cumulative <int>,
+#> #   on_ventilator_currently <int>, on_ventilator_cumulative <int>,
+#> #   recovered <int>, hash <chr>, last_modified <chr>, death <int>,
+#> #   hospitalized <int>, total <int>, total_test_results <int>, notes <chr>,
+#> #   request_datetime <dttm>
 ```
 
 Or the same by state:
 
 ``` r
 get_states_current()
-#> # A tibble: 56 x 18
+#> # A tibble: 56 x 30
 #>    state positive positive_score negative_score negative_regula…
 #>    <chr>    <int>          <int>          <int>            <int>
-#>  1 AK          22              1              1                1
-#>  2 AL         167              1              1                0
-#>  3 AR         174              1              1                1
-#>  4 AZ         265              1              1                1
-#>  5 CA        1733              1              1                1
-#>  6 CO         591              1              1                1
-#>  7 CT         415              1              1                1
-#>  8 DC         116              1              1                1
-#>  9 DE          68              1              1                0
-#> 10 FL        1171              1              1                1
-#> # … with 46 more rows, and 13 more variables: commercial_score <int>,
-#> #   grade <chr>, score <int>, negative <int>, pending <int>,
-#> #   hospitalized <int>, death <int>, total <int>, last_update <dttm>,
-#> #   check_time <dttm>, date_modified <dttm>, date_checked <dttm>,
-#> #   request_datetime <dttm>
+#>  1 AK         339              1              1                1
+#>  2 AL        6026              1              1                0
+#>  3 AR        2741              1              1                1
+#>  4 AZ        6045              1              1                0
+#>  5 CA       39254              1              1                0
+#>  6 CO       12256              1              1                1
+#>  7 CT       23921              1              1                1
+#>  8 DC        3528              1              1                1
+#>  9 DE        3442              1              1                1
+#> 10 FL       30533              1              1                1
+#> # … with 46 more rows, and 25 more variables: commercial_score <int>,
+#> #   grade <chr>, score <int>, notes <chr>, data_quality_grade <chr>,
+#> #   negative <int>, pending <int>, hospitalized_currently <int>,
+#> #   hospitalized_cumulative <int>, in_icu_currently <int>,
+#> #   in_icu_cumulative <int>, on_ventilator_currently <int>,
+#> #   on_ventilator_cumulative <int>, recovered <int>, last_update <dttm>,
+#> #   check_time <dttm>, death <int>, hospitalized <int>, total <int>,
+#> #   total_test_results <int>, fips <chr>, date_modified <dttm>,
+#> #   date_checked <dttm>, hash <chr>, request_datetime <dttm>
 ```
 
 Daily state counts can be filtered by state and/or date:
@@ -75,22 +84,62 @@ get_states_daily(
   state = "NY", 
   date = "2020-03-17"
 )
+#> # A tibble: 1 x 25
+#>   date       state positive negative pending hospitalized_cu… hospitalized_cu…
+#>   <date>     <chr>    <int>    <int> <lgl>   <lgl>            <lgl>           
+#> 1 2020-03-17 NY        1700     5506 NA      NA               NA              
+#> # … with 18 more variables: in_icu_currently <lgl>, in_icu_cumulative <lgl>,
+#> #   on_ventilator_currently <lgl>, on_ventilator_cumulative <lgl>,
+#> #   recovered <lgl>, hash <chr>, date_checked <dttm>, death <int>,
+#> #   hospitalized <lgl>, total <int>, total_test_results <int>, fips <chr>,
+#> #   death_increase <int>, hospitalized_increase <int>, negative_increase <int>,
+#> #   positive_increase <int>, total_test_results_increase <int>,
+#> #   request_datetime <dttm>
+```
+
+For data in long format:
+
+``` r
+refresh_covid19us()
+#> # A tibble: 53,675 x 7
+#>    date       location location_type location_code location_code_t… data_type
+#>    <date>     <chr>    <chr>         <chr>         <chr>            <chr>    
+#>  1 2020-04-24 AK       state         02            fips_code        positive 
+#>  2 2020-04-24 AK       state         02            fips_code        negative 
+#>  3 2020-04-24 AK       state         02            fips_code        pending  
+#>  4 2020-04-24 AK       state         02            fips_code        hospital…
+#>  5 2020-04-24 AK       state         02            fips_code        hospital…
+#>  6 2020-04-24 AK       state         02            fips_code        in_icu_c…
+#>  7 2020-04-24 AK       state         02            fips_code        in_icu_c…
+#>  8 2020-04-24 AK       state         02            fips_code        on_venti…
+#>  9 2020-04-24 AK       state         02            fips_code        on_venti…
+#> 10 2020-04-24 AK       state         02            fips_code        recovered
+#> # … with 53,665 more rows, and 1 more variable: value <int>
+```
+
+And to get information about the data:
+
+``` r
+get_info_covid19us()
 #> # A tibble: 1 x 10
-#>   date       state positive negative pending hospitalized death total
-#>   <date>     <chr>    <int>    <int> <lgl>   <lgl>        <int> <int>
-#> 1 2020-03-17 NY        1700     5506 NA      NA               7  7206
-#> # … with 2 more variables: date_checked <dttm>, request_datetime <dttm>
+#>   data_set_name package_name function_to_get… data_details data_url license_url
+#>   <chr>         <chr>        <chr>            <chr>        <chr>    <chr>      
+#> 1 covid19us     covid19us    refresh_covid19… Open Source… https:/… https://gi…
+#> # … with 4 more variables: data_types <chr>, location_types <chr>,
+#> #   spatial_extent <chr>, has_geospatial_info <lgl>
 ```
 
 ## All Functions
 
     get_counties_info
+    get_info_covid19us
     get_states_current
     get_states_daily
     get_states_info
     get_tracker_urls
     get_us_current
     get_us_daily
+    refresh_covid19us
 
 ## Other Details
 
