@@ -56,6 +56,6 @@ test_that("other funs work", {
   refresh <- refresh_covid19us()
   if (nrow(refresh) > 0) expect_gte(ncol(refresh), 5)
 
-  info <- refresh_covid19us()
+  info <- get_info_covid19us()
   if (nrow(info) > 0) expect_gte(ncol(info), 5)
 })
