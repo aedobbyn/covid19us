@@ -3,7 +3,9 @@ globalVariables(
   c(
     ".",
     "check_time",
+    "data_type",
     "date_checked",
+    "fips",
     "get_counties",
     "get_states_current",
     "get_states_daily",
@@ -13,11 +15,14 @@ globalVariables(
     "get_us_daily",
     "kind",
     "last_update",
+    "location_code_type",
+    "location_type",
     "name",
     "request_datetime",
     "ssl_no_verify",
     "state",
     "state_name",
-    "states"
+    "states",
+    "value"
   )
 )
