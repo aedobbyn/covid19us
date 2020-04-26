@@ -68,6 +68,8 @@ For data in long format:
 (dat <- refresh_covid19us())
 ```
 
+Which can be easier to plot
+
 ```{r warning=FALSE, message=FALSE}
 library(dplyr)
 library(ggplot2)
@@ -99,7 +101,7 @@ dat %>%
 ```
 
 
-And to get information about the data:
+To get information about the data:
 
 ```{r}
 get_info_covid19us()

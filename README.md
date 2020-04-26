@@ -41,7 +41,7 @@ get_us_current()
 #> # A tibble: 1 x 18
 #>   positive negative pending hospitalized_cu… hospitalized_cu… in_icu_currently
 #>      <int>    <int>   <int>            <int>            <int>            <int>
-#> 1   931698  4252937    5315            56312            94743            15020
+#> 1   959056  4482023    4445            55030            95810            14831
 #> # … with 12 more variables: in_icu_cumulative <int>,
 #> #   on_ventilator_currently <int>, on_ventilator_cumulative <int>,
 #> #   recovered <int>, hash <chr>, last_modified <chr>, death <int>,
@@ -101,21 +101,23 @@ For data in long format:
 
 ``` r
 (dat <- refresh_covid19us())
-#> # A tibble: 54,739 x 7
+#> # A tibble: 55,803 x 7
 #>    date       location location_type location_code location_code_t… data_type
 #>    <date>     <chr>    <chr>         <chr>         <chr>            <chr>    
-#>  1 2020-04-25 AK       state         02            fips_code        positive 
-#>  2 2020-04-25 AK       state         02            fips_code        negative 
-#>  3 2020-04-25 AK       state         02            fips_code        pending  
-#>  4 2020-04-25 AK       state         02            fips_code        hospital…
-#>  5 2020-04-25 AK       state         02            fips_code        hospital…
-#>  6 2020-04-25 AK       state         02            fips_code        in_icu_c…
-#>  7 2020-04-25 AK       state         02            fips_code        in_icu_c…
-#>  8 2020-04-25 AK       state         02            fips_code        on_venti…
-#>  9 2020-04-25 AK       state         02            fips_code        on_venti…
-#> 10 2020-04-25 AK       state         02            fips_code        recovered
-#> # … with 54,729 more rows, and 1 more variable: value <int>
+#>  1 2020-04-26 AK       state         02            fips_code        positive 
+#>  2 2020-04-26 AK       state         02            fips_code        negative 
+#>  3 2020-04-26 AK       state         02            fips_code        pending  
+#>  4 2020-04-26 AK       state         02            fips_code        hospital…
+#>  5 2020-04-26 AK       state         02            fips_code        hospital…
+#>  6 2020-04-26 AK       state         02            fips_code        in_icu_c…
+#>  7 2020-04-26 AK       state         02            fips_code        in_icu_c…
+#>  8 2020-04-26 AK       state         02            fips_code        on_venti…
+#>  9 2020-04-26 AK       state         02            fips_code        on_venti…
+#> 10 2020-04-26 AK       state         02            fips_code        recovered
+#> # … with 55,793 more rows, and 1 more variable: value <int>
 ```
+
+Which can be easier to plot
 
 ``` r
 library(dplyr)
@@ -149,7 +151,7 @@ dat %>%
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-And to get information about the data:
+To get information about the data:
 
 ``` r
 get_info_covid19us()
