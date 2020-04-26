@@ -65,8 +65,39 @@ get_states_daily(
 For data in long format:
 
 ```{r}
-refresh_covid19us()
+(dat <- refresh_covid19us())
 ```
+
+```{r warning=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+
+dat %>% 
+  filter(
+    location == "NY" &
+      data_type %in% 
+      c(
+        "positive_increase",
+        "total_test_results_increase",
+        "death_increase",
+        "hospitalized_increase"
+      )
+  ) %>% 
+  mutate(
+    Type = data_type %>% 
+      stringr::str_replace_all("_", " ") %>% 
+      stringr::str_to_title()
+  ) %>% 
+  arrange(date) %>% 
+  ggplot(aes(date, value, color = Type)) +
+  geom_smooth(se = FALSE) + 
+  scale_x_date(date_breaks = "2 weeks") +
+  labs(title = "COVID in NY") +
+  xlab("Date") +
+  ylab("Value") +
+  theme_minimal(base_family = "Source Sans Pro")
+```
+
 
 And to get information about the data:
 
