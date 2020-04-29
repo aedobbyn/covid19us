@@ -1,6 +1,6 @@
 Package: covid19us
 Title: Cases of COVID-19 in the United States
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
     person(given = "Amanda",
            family = "Dobbyn",

@@ -6,5 +6,3 @@
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
-
-* Fixed the return value in a test because the API returns an informative error now
