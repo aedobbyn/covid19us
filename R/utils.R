@@ -1,4 +1,4 @@
-base_url <- "https://covidtracking.com/api/"
+base_url <- "https://covidtracking.com/api/v1/"
 
 request <- function(url) { # nocov start
   resp <-
@@ -70,7 +70,7 @@ try_request <- purrr::possibly(
 )
 
 get <- function(endpoint, query = "") {
-  url <- glue::glue("{base_url}{endpoint}{query}")
+  url <- glue::glue("{base_url}{endpoint}{query}.json")
 
   have_internet <- curl::has_internet()
 
