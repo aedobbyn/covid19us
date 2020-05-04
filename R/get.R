@@ -30,27 +30,25 @@ get_states_current <- function() {
 #' get_states_daily(date = "2020-03-11")
 #' }
 get_states_daily <- function(state = "all", date = "all") {
-  if (state == "all" && date == "all") {
-    q <- ""
-  } else {
-    if (date != "all") {
-      date %<>%
-        date_to_int()
+  dat <- get("states/daily")
 
-      # All states, specific date
-      if (state == "all") {
-        q <- glue::glue("?date={date}")
-        # Specific state and specific date
-      } else {
-        q <- glue::glue("?state={state}&date={date}")
-      }
-      # Specific state, all dates
-    } else {
-      q <- glue::glue("?state={state}")
-    }
+  if (date != "all") {
+    dt <- clean_date(date)
+    dat %<>%
+      filter(
+        date == dt
+      )
   }
 
-  get("states/daily", query = q)
+  if (state != "all") {
+    st <- state
+    dat %<>%
+      filter(
+        state == st
+      )
+  }
+
+  dat
 }
 
 #' Get COVID-related information for each state
