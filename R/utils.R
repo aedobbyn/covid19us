@@ -53,7 +53,8 @@ request <- function(url) { # nocov start
     names(tbl) %>%
     .[stringr::str_detect(., "date|update|time")]
 
-  tbl %>%
+
+  suppressWarnings( tbl %>%
     mutate_at(
       date_vars,
       clean_date
@@ -61,6 +62,7 @@ request <- function(url) { # nocov start
     mutate(
       request_datetime = lubridate::now()
     )
+  )
 } # nocov end
 
 try_request <- purrr::possibly(
@@ -98,14 +100,14 @@ date_to_int <- function(x) {
 }
 
 clean_date <- function(x) {
-  if (all(stringr::str_detect(x, "[A-Z]+"))) {
+  if (all(stringr::str_detect(x, "[A-Z]+"), na.rm=T)) {
     # For the dateChecked case
     x %>%
       stringr::str_remove_all("[A-Z]+") %>%
       lubridate::as_datetime(
         tz = "America/New_York"
       )
-  } else if (all(stringr::str_detect(x, "/"))) {
+  } else if (all(stringr::str_detect(x, "/"), na.rm=T)) {
     # For the `check_time` case in `get_states_current()`
     x %>%
       stringr::str_replace(" ", "/20 ") %>%
