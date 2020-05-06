@@ -41,7 +41,7 @@ get_us_current()
 #> # A tibble: 1 x 18
 #>   positive negative pending hospitalized_cu… hospitalized_cu… in_icu_currently
 #>      <int>    <int>   <int>            <int>            <int>            <int>
-#> 1   959056  4482023    4445            55030            95810            14831
+#> 1  1195605  6348723    2633            50906           129357             9348
 #> # … with 12 more variables: in_icu_cumulative <int>,
 #> #   on_ventilator_currently <int>, on_ventilator_cumulative <int>,
 #> #   recovered <int>, hash <chr>, last_modified <chr>, death <int>,
@@ -53,19 +53,22 @@ Or the same by state:
 
 ``` r
 get_states_current()
+#> Warning: All formats failed to parse. No formats found.
+
+#> Warning: All formats failed to parse. No formats found.
 #> # A tibble: 56 x 30
 #>    state positive positive_score negative_score negative_regula…
 #>    <chr>    <int>          <int>          <int>            <int>
-#>  1 AK         341              1              1                1
-#>  2 AL        6270              1              1                0
-#>  3 AR        2941              1              1                1
-#>  4 AZ        6526              1              1                0
-#>  5 CA       42164              1              1                0
-#>  6 CO       12968              1              1                1
-#>  7 CT       25269              1              1                1
-#>  8 DC        3841              1              1                1
-#>  9 DE        4034              1              1                1
-#> 10 FL       31528              1              1                1
+#>  1 AK         371              1              1                1
+#>  2 AL        8285              1              1                0
+#>  3 AR        3496              1              1                1
+#>  4 AZ        9305              1              1                0
+#>  5 CA       56212              1              1                0
+#>  6 CO       16907              1              1                1
+#>  7 CT       30621              1              1                1
+#>  8 DC        5322              1              1                1
+#>  9 DE        5371              1              1                1
+#> 10 FL       37439              1              1                1
 #> # … with 46 more rows, and 25 more variables: commercial_score <int>,
 #> #   grade <chr>, score <int>, notes <chr>, data_quality_grade <chr>,
 #> #   negative <int>, pending <int>, hospitalized_currently <int>,
@@ -84,15 +87,16 @@ get_states_daily(
   state = "NY", 
   date = "2020-03-17"
 )
-#> # A tibble: 1 x 25
+#> # A tibble: 1 x 27
 #>   date       state positive negative pending hospitalized_cu… hospitalized_cu…
-#>   <date>     <chr>    <int>    <int> <lgl>   <lgl>            <lgl>           
-#> 1 2020-03-17 NY        1700     5506 NA      NA               NA              
-#> # … with 18 more variables: in_icu_currently <lgl>, in_icu_cumulative <lgl>,
-#> #   on_ventilator_currently <lgl>, on_ventilator_cumulative <lgl>,
-#> #   recovered <lgl>, hash <chr>, date_checked <dttm>, death <int>,
-#> #   hospitalized <lgl>, total <int>, total_test_results <int>, fips <chr>,
-#> #   death_increase <int>, hospitalized_increase <int>, negative_increase <int>,
+#>   <date>     <chr>    <int>    <int>   <int>            <int>            <int>
+#> 1 2020-03-17 NY        1700     5506      NA              325               NA
+#> # … with 20 more variables: in_icu_currently <int>, in_icu_cumulative <int>,
+#> #   on_ventilator_currently <int>, on_ventilator_cumulative <int>,
+#> #   recovered <int>, data_quality_grade <chr>, last_update <dttm>, hash <chr>,
+#> #   date_checked <dttm>, death <int>, hospitalized <int>, total <int>,
+#> #   total_test_results <int>, fips <chr>, death_increase <int>,
+#> #   hospitalized_increase <int>, negative_increase <int>,
 #> #   positive_increase <int>, total_test_results_increase <int>,
 #> #   request_datetime <dttm>
 ```
@@ -101,20 +105,20 @@ For data in long format:
 
 ``` r
 (dat <- refresh_covid19us())
-#> # A tibble: 55,803 x 7
+#> # A tibble: 65,227 x 7
 #>    date       location location_type location_code location_code_t… data_type
 #>    <date>     <chr>    <chr>         <chr>         <chr>            <chr>    
-#>  1 2020-04-26 AK       state         02            fips_code        positive 
-#>  2 2020-04-26 AK       state         02            fips_code        negative 
-#>  3 2020-04-26 AK       state         02            fips_code        pending  
-#>  4 2020-04-26 AK       state         02            fips_code        hospital…
-#>  5 2020-04-26 AK       state         02            fips_code        hospital…
-#>  6 2020-04-26 AK       state         02            fips_code        in_icu_c…
-#>  7 2020-04-26 AK       state         02            fips_code        in_icu_c…
-#>  8 2020-04-26 AK       state         02            fips_code        on_venti…
-#>  9 2020-04-26 AK       state         02            fips_code        on_venti…
-#> 10 2020-04-26 AK       state         02            fips_code        recovered
-#> # … with 55,793 more rows, and 1 more variable: value <int>
+#>  1 2020-05-05 AK       state         02            fips_code        positive 
+#>  2 2020-05-05 AK       state         02            fips_code        negative 
+#>  3 2020-05-05 AK       state         02            fips_code        pending  
+#>  4 2020-05-05 AK       state         02            fips_code        hospital…
+#>  5 2020-05-05 AK       state         02            fips_code        hospital…
+#>  6 2020-05-05 AK       state         02            fips_code        in_icu_c…
+#>  7 2020-05-05 AK       state         02            fips_code        in_icu_c…
+#>  8 2020-05-05 AK       state         02            fips_code        on_venti…
+#>  9 2020-05-05 AK       state         02            fips_code        on_venti…
+#> 10 2020-05-05 AK       state         02            fips_code        recovered
+#> # … with 65,217 more rows, and 1 more variable: value <int>
 ```
 
 Which can be easier to plot
