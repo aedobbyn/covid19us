@@ -98,17 +98,17 @@ date_to_int <- function(x) {
 }
 
 clean_date <- function(x) {
-  if (all(stringr::str_detect(x, "[A-Z]+"))) {
+
+  if (all(stringr::str_detect(x, "[A-Z]+") || is.na(x))) {
     # For the dateChecked case
     x %>%
       stringr::str_remove_all("[A-Z]+") %>%
       lubridate::as_datetime(
         tz = "America/New_York"
       )
-  } else if (all(stringr::str_detect(x, "/"))) {
+  } else if (all(stringr::str_detect(x, "/") || is.na(x))) {
     # For the `check_time` case in `get_states_current()`
     x %>%
-      stringr::str_replace(" ", "/20 ") %>%
       lubridate::mdy_hm(
         tz = "America/New_York"
       )
