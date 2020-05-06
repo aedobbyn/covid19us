@@ -53,9 +53,6 @@ Or the same by state:
 
 ``` r
 get_states_current()
-#> Warning: All formats failed to parse. No formats found.
-
-#> Warning: All formats failed to parse. No formats found.
 #> # A tibble: 56 x 30
 #>    state positive positive_score negative_score negative_regula…
 #>    <chr>    <int>          <int>          <int>            <int>

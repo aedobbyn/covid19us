@@ -99,15 +99,15 @@ date_to_int <- function(x) {
 
 clean_date <- function(x) {
 
-  if (all(stringr::str_detect(x, "[A-Z]+") || is.na(x))) {
+  if (all(stringr::str_detect(x, "[A-Z]+") | is.na(x))) {
     # For the dateChecked case
     x %>%
       stringr::str_remove_all("[A-Z]+") %>%
       lubridate::as_datetime(
         tz = "America/New_York"
       )
-  } else if (all(stringr::str_detect(x, "/") || is.na(x))) {
-    if (!any(stringr::str_detect(x, "/2020"))) {
+  } else if (all(stringr::str_detect(x, "/") | is.na(x))) {
+    if (!any(stringr::str_detect(x[!is.na(x)], "/2020"))) {
       x %<>%
         stringr::str_replace_all(" ", "/2020 ")
     }
