@@ -107,7 +107,11 @@ clean_date <- function(x) {
         tz = "America/New_York"
       )
   } else if (all(stringr::str_detect(x, "/") || is.na(x))) {
-    # For the `check_time` case in `get_states_current()`
+    if (!any(stringr::str_detect(x, "/2020"))) {
+      x %<>%
+        stringr::str_replace_all(" ", "/2020 ")
+    }
+
     x %>%
       lubridate::mdy_hm(
         tz = "America/New_York"
