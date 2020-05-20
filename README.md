@@ -41,7 +41,7 @@ get_us_current()
 #> # A tibble: 1 x 18
 #>   positive negative pending hospitalized_cu… hospitalized_cu… in_icu_currently
 #>      <int>    <int>   <int>            <int>            <int>            <int>
-#> 1  1195605  6348723    2633            50906           129357             9348
+#> 1  1520778 10713209    2944            41174           159634             9829
 #> # … with 12 more variables: in_icu_cumulative <int>,
 #> #   on_ventilator_currently <int>, on_ventilator_cumulative <int>,
 #> #   recovered <int>, hash <chr>, last_modified <chr>, death <int>,
@@ -56,16 +56,16 @@ get_states_current()
 #> # A tibble: 56 x 30
 #>    state positive positive_score negative_score negative_regula…
 #>    <chr>    <int>          <int>          <int>            <int>
-#>  1 AK         371              1              1                1
-#>  2 AL        8285              1              1                0
-#>  3 AR        3496              1              1                1
-#>  4 AZ        9305              1              1                0
-#>  5 CA       56212              1              1                0
-#>  6 CO       16907              1              1                1
-#>  7 CT       30621              1              1                1
-#>  8 DC        5322              1              1                1
-#>  9 DE        5371              1              1                1
-#> 10 FL       37439              1              1                1
+#>  1 AK         399              1              1                1
+#>  2 AL       12376              1              1                0
+#>  3 AR        4923              1              1                1
+#>  4 AZ       14566              1              1                0
+#>  5 CA       81795              1              1                0
+#>  6 CO       22202              1              1                1
+#>  7 CT       38430              1              1                1
+#>  8 DC        7434              1              1                1
+#>  9 DE        8037              1              1                1
+#> 10 FL       46944              1              1                1
 #> # … with 46 more rows, and 25 more variables: commercial_score <int>,
 #> #   grade <chr>, score <int>, notes <chr>, data_quality_grade <chr>,
 #> #   negative <int>, pending <int>, hospitalized_currently <int>,
@@ -102,20 +102,20 @@ For data in long format:
 
 ``` r
 (dat <- refresh_covid19us())
-#> # A tibble: 65,227 x 7
+#> # A tibble: 80,123 x 7
 #>    date       location location_type location_code location_code_t… data_type
 #>    <date>     <chr>    <chr>         <chr>         <chr>            <chr>    
-#>  1 2020-05-05 AK       state         02            fips_code        positive 
-#>  2 2020-05-05 AK       state         02            fips_code        negative 
-#>  3 2020-05-05 AK       state         02            fips_code        pending  
-#>  4 2020-05-05 AK       state         02            fips_code        hospital…
-#>  5 2020-05-05 AK       state         02            fips_code        hospital…
-#>  6 2020-05-05 AK       state         02            fips_code        in_icu_c…
-#>  7 2020-05-05 AK       state         02            fips_code        in_icu_c…
-#>  8 2020-05-05 AK       state         02            fips_code        on_venti…
-#>  9 2020-05-05 AK       state         02            fips_code        on_venti…
-#> 10 2020-05-05 AK       state         02            fips_code        recovered
-#> # … with 65,217 more rows, and 1 more variable: value <int>
+#>  1 2020-05-19 AK       state         02            fips_code        positive 
+#>  2 2020-05-19 AK       state         02            fips_code        negative 
+#>  3 2020-05-19 AK       state         02            fips_code        pending  
+#>  4 2020-05-19 AK       state         02            fips_code        hospital…
+#>  5 2020-05-19 AK       state         02            fips_code        hospital…
+#>  6 2020-05-19 AK       state         02            fips_code        in_icu_c…
+#>  7 2020-05-19 AK       state         02            fips_code        in_icu_c…
+#>  8 2020-05-19 AK       state         02            fips_code        on_venti…
+#>  9 2020-05-19 AK       state         02            fips_code        on_venti…
+#> 10 2020-05-19 AK       state         02            fips_code        recovered
+#> # … with 80,113 more rows, and 1 more variable: value <int>
 ```
 
 Which can be easier to plot

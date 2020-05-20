@@ -132,7 +132,13 @@ refresh_covid19us <- function(type = "daily") {
 
   fun <- ifelse(type == "daily", get_states_daily, get_states_current)
 
-  fun() %>%
+  raw <- fun()
+
+  if (nrow(raw) == 0) {
+    return(raw)
+  }
+
+  raw %>%
     tidyr::pivot_longer(
       matches(data_type_reg),
       names_to = "data_type"

@@ -2,8 +2,16 @@ base_url <- "https://covidtracking.com/api/v1/"
 
 request <- function(url) { # nocov start
   resp <-
-    httr::RETRY("GET", url) %>%
-    httr::stop_for_status()
+    httr::RETRY("GET", url)
+
+  status <- httr::status_code(resp)
+
+  if (status >= 300) {
+    message(
+      glue::glue("API currently unavailable: status code {status}.")
+    )
+    return(tibble::tibble())
+  }
 
   lst <- httr::content(resp)
 
