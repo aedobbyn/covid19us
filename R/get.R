@@ -139,6 +139,7 @@ refresh_covid19us <- function(type = "daily") {
   }
 
   raw %>%
+    mutate_all(as.character) %>%
     tidyr::pivot_longer(
       matches(data_type_reg),
       names_to = "data_type"
