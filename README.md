@@ -2,17 +2,11 @@
 # covid19us
 
 <!-- badges: start -->
-
-[![Travis build
-status](https://travis-ci.org/aedobbyn/covid19us.svg?branch=master)](https://travis-ci.org/aedobbyn/covid19us)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid19us?branch=master&svg=true)](https://ci.appveyor.com/project/aedobbyn/covid19us)
-[![Codecov test
-coverage](https://codecov.io/gh/aedobbyn/covid19us/graph/badge.svg)](https://codecov.io/gh/aedobbyn/covid19us)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/covid19us)](https://CRAN.R-project.org/package=covid19us)
-[![License:
-MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Travis build status](https://travis-ci.org/aedobbyn/covid19us.svg?branch=master)](https://travis-ci.org/aedobbyn/covid19us)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/aedobbyn/covid19us?branch=master&svg=true)](https://ci.appveyor.com/project/aedobbyn/covid19us)
+[![Codecov test coverage](https://app.codecov.io/gh/aedobbyn/covid19us/graph/badge.svg)](https://app.codecov.io/gh/aedobbyn/covid19us)
+[![CRAN status](https://www.r-pkg.org/badges/version/covid19us)](https://CRAN.R-project.org/package=covid19us)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 <!-- [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/covid19us)](https://github.com/metacran/cranlogs.app) -->
 <!-- badges: end -->
 
