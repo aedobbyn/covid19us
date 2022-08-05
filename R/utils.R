@@ -1,4 +1,4 @@
-base_url <- "https://covidtracking.com/api/v1/"
+base_url <- "https://api.covidtracking.com/v1/"
 
 request <- function(url) { # nocov start
   resp <-
