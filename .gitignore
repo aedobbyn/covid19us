@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 CRAN-RELEASE
+tests/testthat/testthat-problems.rds

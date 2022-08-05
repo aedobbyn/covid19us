@@ -8,7 +8,7 @@
 #' get_states_current()
 #' }
 get_states_current <- function() {
-  get("states")
+  get("states/current")
 }
 
 #' Get daily counts for every state
@@ -170,6 +170,16 @@ refresh_covid19us <- function(type = "daily") {
 #' }
 get_info_covid19us <- function() {
   latest_data <- refresh_covid19us(type = "daily")
+
+  if (!"data_type" %in% names(latest_data)) {
+    # Try again
+    Sys.sleep(30)
+    latest_data <- refresh_covid19us(type = "daily")
+
+    if (!"data_type" %in% names(latest_data)) {
+      stop("Data service unavailable.")
+    }
+  }
 
   dplyr::tibble(
     data_set_name = "covid19us",

@@ -106,7 +106,6 @@ date_to_int <- function(x) {
 }
 
 clean_date <- function(x) {
-
   if (all(stringr::str_detect(x, "[A-Z]+") | is.na(x))) {
     # For the dateChecked case
     x %>%
